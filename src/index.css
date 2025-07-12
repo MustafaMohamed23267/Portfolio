@@ -1,0 +1,422 @@
+@import "tailwindcss";
+
+@theme
+ {
+    --color-border:hsl(var(--border));
+    --color-background:hsl(var(--background));
+    --color-foreground:hsl(var(--foreground));
+    --color-primary:hsl(var(--primary));
+    --color-foreground-primary:hsl(var(--foreground-primary));
+    --color-card:hsl(var(--card));
+    --color-card2:hsl(var(--card2));
+    --color-navbg:hsl(var(--navbg));
+    /* --box-shadow-navshadow:0 0 10px 2px hsl(var(--navshadow)); */
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+    --animate-fade-in: fade-in 0.7s ease-out forwards;
+    --animate-fade-in-delay-1:fade-in 0.7s ease-out 0.2s forwards;
+    --animate-fade-in-delay-2:fade-in 0.7s ease-out 0.4s forwards;
+    --animate-fade-in-delay-3:fade-in 0.7s ease-out 0.6s forwards;
+    --animate-fade-in-delay-4:fade-in 0.7s ease-out 0.8s forwards;
+    --animate-meteor: meteor 5s linear infinite;
+    --animate-skills: skills 2s ease-in-out 0s infinite;
+
+    --animate-wiggle: wiggle 0.7s linear 0s 1;
+
+ }
+
+ @layer base
+ {
+     :root
+     {
+         --background:210 40% 98%;
+         --foreground: 222 47% 11%;
+         --card : 0, 1%, 66%;
+         --card2 : 0 0% 100%;
+         --primary : 250 47% 60%;
+         --primary-foreground : 210 40% 98%;
+         --border : 214 32% 91%;
+         --navbg : 0 1% 65% ;
+         --navshadow : 0 0% 40% ;
+         
+     }
+     .dark
+     {
+         --background:222 47% 4%;
+         --foreground: 213 31% 91%;
+         --card : 222 47% 8%;
+         --card2 : 0 0% 100%;
+         --primary : 250 65% 65%;
+         --primary-foreground : 213 31% 91%;
+         --border : 217 33% 20%;
+         --navbg : 0 2% 30%;
+         --navshadow : 0 0% 20% ;
+         
+
+     }
+ }
+
+/* @utility animate-meteor{
+    @apply transition 5s linear infinite;}  */
+
+ 
+    @utility navshadow
+ {
+    
+    box-shadow: 0 0 7px hsl(var(--navshadow));
+ } 
+    
+body {
+            background-color: var(--color-background);
+            color: var(--color-foreground);
+            
+        }
+@utility cosmic
+{
+    @apply bg-indigo-600 outline outline-offset-4 outline-indigo-600 rounded-full px-6 py-2 transition-all duration-200 hover:shadow-[0_0_15px_rgba(139,92,246,0.5)]  hover:scale-105 active:scale-95;
+}
+
+@utility fade-in
+    {
+        animation: fade-in  2s ease-in;
+        
+    }
+
+
+@utility moving-animation
+    {
+        animation: moving-animation  1s linear;
+        
+    }
+
+@utility moving-animation-delay-2
+    {
+        
+        animation:moving-animation 1s linear 0.2s  ;
+    }
+
+@utility navbar-animation
+{
+animation: navbar-animation 2s linear;
+}
+@utility star
+{
+    @apply absolute rounded-full bg-white;
+    box-shadow: 0 0 10px 2px rgba(255,255,255,0.5);
+    /* animation-name:StarsAnimation; 
+    animation-iteration-count: infinite; */
+
+
+}
+
+
+
+
+
+@utility meteor
+{
+    @apply absolute bg-linear-to-l from-white via-white to-transparent rounded-full ;
+    box-shadow: 0 0 10px 5px rgba(255,255,255,0.3); 
+    animation-name:meteor;
+    animation-iteration-count: infinite;
+    /* animation-duration: 70s; */
+    animation-timing-function: linear  ;
+    /* transition:5s; */
+    
+}
+
+@utility text-glow
+ {
+    @aplly relative;
+    text-shadow: 0 0 10px rgba(167,139,250,0.5);
+ } 
+
+
+ @utility card-hover
+ {
+    @apply transition-transform duration-300 hover:scale-[1.05] hover:shadow-lg;
+    text-shadow:0 0 10px rgba(167,139,250,0.5);
+   
+ } 
+ @utility contactInput {
+    @apply bg-gray-800 text-white text-lg w-full px-2 py-1 rounded-md text-center max-sm:w-full;
+ }
+
+ 
+@utility gradient-border
+ {
+    @apply relative rounded-md;
+    background: linear-gradient(to right , hsl(222,47% , 8%),hsl(var(--card)));
+    background-clip:padding-box;
+    border: 1px solid transparent;
+
+ }  
+
+ @utility container
+ {
+    margin-inline:auto;
+    padding-inline:2rem;
+}
+
+@keyframes meteor {
+        0%
+        {
+            transform:rotate(240deg) translateX(0);
+            opacity: 1;
+        }
+        70%
+        {
+            opacity: 1;
+        }
+        100%
+        {
+            transform:rotate(240deg) translateX(-500px) ;
+            opacity: 0;
+        }
+    }
+
+    @keyframes navbar-animation {
+        0%{
+            opacity: 0%;
+            transform: translateX(-100px);
+        }
+
+        100%{
+            opacity: 100%;
+            transform: translateX(0px);
+        }
+    }
+
+    @keyframes StarsAnimation {
+        0%
+        {
+            transform:rotate(360deg) translateX(0);
+            opacity: 1;
+        }
+        70%
+        {
+            opacity: 1;
+        }
+        100%
+        {
+            transform:rotate(360deg) translateX(-500px) ;
+            opacity: 0;
+        }
+    }
+
+ @keyframes pulse-subtle
+    {
+        0%,100%
+        {opacity: 1;
+        }
+        50%
+        {
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes fade-in
+    {
+        0%
+        {
+            opacity: 0;
+        }
+        100%
+        {
+            opacity: 1;
+        }
+    }
+
+
+    @keyframes moving-animation
+    {
+        0%
+        {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        100%
+        {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes wiggle {
+        0%
+        {
+            transform: translateY(5px);
+        }
+        100%
+        {
+            transform: translateY(-5px);
+        }
+        
+    }
+
+      @keyframes skills {
+       
+        50%
+        {
+            opacity: 50%;
+        }
+       
+        
+    }
+
+    
+
+
+ /* :root
+ {
+    --color-border:hsl(var(--border));
+    --background-color:hsl(var(--background));
+    --color-foreground:hsl(var(--foreground));
+    --color-primary:hsl(var(--primary));
+    --color-foreground-primary:hsl(var(--foreground-primary));
+    --color-card:hsl(var(--card));
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+    --animate-fade-in: fade-in 0.7s ease-out forwards;
+    --animate-fade-in-delay-1:fade-in 0.7s ease-out 0.2s forwards;
+    --animate-fade-in-delay-2:fade-in 0.7s ease-out 0.4s forwards;
+    --animate-fade-in-delay-3:fade-in 0.7s ease-out 0.6s forwards;
+    --animate-fade-in-delay-4:fade-in 0.7s ease-out 0.8s forwards;
+    --animate-meteor: meteor 5s linear infinite;
+
+    @keyframes float
+    {
+        100%{
+            transform: translateY(0);
+        }
+        50%
+        {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes pulse-subtle
+    {
+        0%,100%
+        {opacity: 1;
+        }
+        50%
+        {
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes fade-in
+    {
+        form
+        {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to
+        {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes meteor {
+        0%
+        {
+            transform:rotate(215deg) translateX(0);
+            opacity: 1;
+        }
+        70%
+        {
+            opacity: 1;
+        }
+        0%
+        {
+            transform:rotate(215deg) translateX(-500px);
+            opacity: 0;
+        }
+    }
+  
+ }
+
+
+  @layer base
+    {
+        :root
+        {
+            --background:210 40% 98%;
+            --foreground: 222 47% 11%;
+            --card : 0 0% 100%;
+            --primary : 250 47% 60%;
+            --frimary-foreground : 210 40% 98%;
+            --border : 214 32% 91%;
+            
+        }
+        .dark
+        {
+            --background:222 47% 4%;
+            --foreground: 213 31% 91%;
+            --card : 222 47% 8%;
+            --primary : 250 65% 65%;
+            --primary-foreground : 213 31% 91%;
+            --border : 217 33% 20%;
+
+        }
+    }
+
+   
+
+
+ @utility container
+ {
+    margin-inline:auto;
+    padding-inline:2rem;
+
+    @media (width>=640px)
+    {
+        max-width:640px;
+    }
+     @media (width>=768px)
+    {
+        max-width:768px;
+    }
+     @media (width>=1024px)
+    {
+        max-width:1024px;
+    }
+     @media (width>=1280px)
+    {
+        max-width:1280px;
+    }
+     @media (width>=1400px)
+    {
+        max-width:1400px;
+    }
+ }
+
+ @utility text-glow
+ {
+    @apllay relative;
+    text-shadow: 0 0 10px rgba(167,139,250,0.5);
+ } 
+
+ @utility card-hover
+ {
+    @apllay transition-transform duration-300 hover :scale[1.02] hover:shadow-lg ;
+    text-shadow: 0 0 10px rgba(167,139,250,0.5);
+ } 
+
+@utility gradient-border
+ {
+    @apllay relative rounded-md ;
+    background: linear-gradient(to right , hsl(var(--card)) , hsl(var(--card)));
+    background-clip:padding-box;
+    border: 1px solid transparent;
+ }  
+
+  @utility cosmic-button
+ {
+    @apllay px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
+    transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
+    hover:scale-105 active:scale-95;
+ }   */
